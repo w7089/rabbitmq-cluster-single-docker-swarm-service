@@ -63,3 +63,5 @@ rabbit@rabbitmq-2
 rabbit@rabbitmq-3
 ...
 ```
+
+Read more at [RabbitMQ cluster as a single Docker Swarm service](https://www.rokpoto.com/rabbitmq-cluster-single-docker-swarm-service/)
