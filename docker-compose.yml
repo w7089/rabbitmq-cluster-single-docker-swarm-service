@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.8.9-alpine
+    hostname: "rabbitmq-{{.Task.Slot}}"
+    networks:
+      - prod-net
+    configs:
+      - source: rabbitmq-config
+        target: /etc/rabbitmq/rabbitmq.conf
+    environment:
+          - RABBITMQ_ERLANG_COOKIE="SECRET_COOKIE"      
+    deploy:      
+      replicas: 3
+      restart_policy:
+        condition: any
+
+networks:
+  prod-net:
+    external: true
+
+configs:
+  rabbitmq-config:
+    external: true
